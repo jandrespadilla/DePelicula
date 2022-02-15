@@ -1,0 +1,85 @@
+#canvasMatrix{
+    width: 100%;
+    height: 200px;
+  }
+.body {
+	font-size:12px;
+	line-height:1.3;
+	font-family:Arial, Helvetica, Sans-Serif;
+	color:#ccc;
+	background:url('images/body-bg.gif');
+	
+}
+
+.body_card{
+    min-height: 350px;
+}
+
+.img_card{
+    max-height: 490px;
+}
+
+.divPeli{
+    margin-top: 50px;
+
+}
+
+.pSinopsis{
+    font-size: 15px;
+    margin-top: 30px;
+}
+
+.pBiografia{
+    font-size: 15px;
+    margin-top: 30px;
+}
+
+#footer {
+	padding:15px 0 0 0;
+	font-size:10px;
+}
+#footer, #footer a {
+	color:#9c9c9c;
+	text-decoration:none;
+}
+#footer a:hover {
+	text-decoration:none;
+}
+#footer p {
+	margin:0;
+	padding:0 0 11px 0;
+	line-height:normal;
+	white-space:nowrap;
+}
+#footer .lf {
+	float:left;
+}
+#footer .rf {
+	float:right;
+}
+
+.texto-menu{
+    font-size: 20px;
+}
+.texto-modal{
+    font-size: 15px;
+    text-overflow: ellipsis;
+}
+.dialog-biografia{
+    width: 500px;
+} 
+
+.clase {
+    overflow: hidden;
+    text-overflow: ellipsis;
+ 
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+   
