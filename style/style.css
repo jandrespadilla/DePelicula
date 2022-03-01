@@ -15,8 +15,32 @@
     min-height: 350px;
 }
 
+
+.body_card_search{
+    min-height: 180px;
+}
+
+
+
 .img_card{
     max-height: 490px;
+}
+
+.img_card_sin{
+    min-height: 490px;
+}
+
+
+.img_card_tv{
+    min-height: 190px;
+    max-height: 190px;
+}
+
+.card_default{
+    min-height: 874px;
+}
+.card_default_interna{
+    min-height: 672px;
 }
 
 .divPeli{
@@ -32,6 +56,7 @@
 .pBiografia{
     font-size: 15px;
     margin-top: 30px;
+    text-align:justify;
 }
 
 #footer {
@@ -83,3 +108,7 @@
     line-clamp: 3;
   }
    
+  .imagenPeli{
+    max-height: 752px;
+    max-width: 500px;
+  }

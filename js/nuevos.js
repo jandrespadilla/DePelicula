@@ -1,4 +1,5 @@
 async function proximamente() {
+  console.log(titulos[0][localStorage.getItem('lang')]['titulo_page_new']);
   if (localStorage.getItem('lang')=='en') {
     $("#toggle-event").prop("checked", false)
   }      
@@ -12,11 +13,9 @@ async function proximamente() {
                 $('#proximamente').append('<div class="row justify-content-between">'
                 +'<div class="row align-items-start">'
                  + '<div class="col-6 ">'
-                 + '<h2>Lo que se viene</h2>'
+                 + '<h2 id="titulo_page_new">'+titulos[0][localStorage.getItem('lang')]['titulo_page_new']+'</h2>'
                  + '</div>'
-                 + '<div class="col-6">'
-                 + '<div class="input-group  justify-content-end "  ><input type="text" class="form-control" id="txtProximamente"  aria-describedby="btnProximamente" ><button class="btn btn-outline-secondary" type="button" id="btnProximamente">Buscar</button></div>   '
-                 + '</div>'
+                 + '<div class="col-6"></div>'
                 +'</div>');
                 $('#proximamente').append('<div class="row justify-content-between" id="divResultado" ></div>');
                 indice=0;
@@ -35,8 +34,12 @@ async function proximamente() {
                   let texto = $("#txtProximamente").val();
                   if ((texto.length>=3)) {
                     $('#divResultado').html('');
-                    $('#divResultado').append('<h2>Estrenos</h2>');
-                    $('#divResultado').append( buscadorTexto(texto));
+                    $('#titulo_page').html('Resultados de busqueda');
+                    
+                    datos = buscadorTexto(texto);
+                  
+                   
+                   
                    
                     
                   }else if(texto.length==0) {
@@ -53,6 +56,9 @@ async function proximamente() {
             }
          }
       ); 
+
+
+  
   }
  
 proximamente();
@@ -81,13 +87,17 @@ async function buscarActores(id,actoresArmados) {
           if ($(this).prop('checked')) {
             localStorage.setItem('lang','es');
             proximamente();
+           
         }else{
           localStorage.setItem('lang','en');
             proximamente();
+          
         }
 
         loadMenu();
+       
      })
     
   })
 
+ 

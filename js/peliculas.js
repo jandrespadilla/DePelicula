@@ -12,10 +12,10 @@ async function buscarPelis() {
                 $('#galeria').append('<div class="row justify-content-between">'
                 +'<div class="row align-items-start">'
                  + '<div class="col-6 ">'
-                 + '<h2>Peliculas</h2>'
+                 + '<h2 id="titulo_page_movie">'+titulos[0][localStorage.getItem('lang')]['titulo_page_movie']+'</h2>'
                  + '</div>'
                  + '<div class="col-6">'
-                 + '<div class="input-group  justify-content-end "  ><input type="text" class="form-control" id="txtPeliculas"  aria-describedby="btnPeliculas" ><button class="btn btn-outline-secondary" type="button" id="btnProximamente">Buscar</button></div>   '
+                 + '<div class="input-group  justify-content-end "  ><input type="text" class="form-control" id="txtPeliculas"  aria-describedby="btnPeliculas" ><button class="btn btn-outline-secondary" type="button" id="btnBuscar">'+botones[0][localStorage.getItem('lang')]['btnBuscar']+'</button></div>   '
                  + '</div>'
                 +'</div>');
                 $('#galeria').append('<div class="row justify-content-between" id="divResultado" ></div>');                   
@@ -24,19 +24,20 @@ async function buscarPelis() {
                     indice++;
                     $('#divResultado').append('<div id="columna'+indice+'" class="col-4 py-3"></div>');
                     $('#columna'+indice).append('<div id="card'+indice+'" class="card"></div>');
-                    $('#card'+indice).append('<a id="link'+indice+'" href="./pelicula.html?idPeli='+proxima.id+'&lang='+localStorage.getItem('lang')+'"></a>');
+                    $('#card'+indice).append('<a id="link'+indice+'" href="./pelicula.html?idPeli='+proxima.id+'"></a>');
                     $('#link'+indice).append('<img class="card-img-top img_card" src="https://image.tmdb.org/t/p/w300/'+proxima.poster_path+'">');
                     $('#card'+indice).append('<div id="card_body'+indice+'" class="card-body body_card" ></div>');
                     $('#card_body'+indice).append('<h3 class="text-center text-white bg-dark p-1" >'+proxima.title+'</h3>');
-                    $('#card_body'+indice).append('<p class="card-text text-dark" >'+proxima.overview+'</p>');
+                    $('#card_body'+indice).append('<p class="card-text text-dark" >'+titulos[0][localStorage.getItem('lang')]['lblSinopsis']+': '+proxima.overview+'</p>');
                 }     
                 $("#galeria").slideDown(1000);
                 $("#txtPeliculas").keyup(function(event){
                     let texto = $("#txtPeliculas").val();
                     if ((texto.length>=3)) {
                       $('#divResultado').html('');
-                      $('#divResultado').append('<h2>Falta Implementar el search</h2>');
-                      $('#divResultado').append(texto);
+                      
+                      $('#titulo_page_movie').html(titulos[0][localStorage.getItem('lang')]['tituloBusqueda']);  
+                      datos = buscadorTexto(texto,'movie');
                     }else if(texto.length==0) {
                         buscarPelis() ;
                       }

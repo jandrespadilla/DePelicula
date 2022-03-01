@@ -1,21 +1,6 @@
 
-    menu_es=[
-        ["Inicio",'./index.html'],
-        ["Interpretes",'./interpretes.html'],
-        ["Peliculas",'./peliculas.html'],
-        ["Series",'./series.html'],
-        ["Contactos",'./contacto.html']
-    ]
-    menu_en=[
-        ["Home",'./index.html'],
-        ["Interpreters",'./interpretes.html'],
-        ["Movies",'./peliculas.html'],
-        ["TV Shows",'./series.html'],
-        ["Contacts",'./contacto.html']
-    ]    
-    menu = [{'es': menu_es ,'en':menu_en } ] 
-    
-   
+
+
      // loadMenu(parametrosUrl('lang'));
       
 function loadMenu() {
@@ -33,9 +18,9 @@ function loadMenu() {
             $('#ulMenu').append('<li id="li'+item[0].split(" ").join("")+'" class="nav-item"></li>');
             $('#li'+item[0].split(" ").join(""))  .append('<a class="nav-link text-white texto-menu" href="'+item[1]+'">'+item[0]+'</a>');
         }         
-       // $('#menu').append('<input class="me-4" type="search" placeholder="Search" aria-label="Search"><button class="btn btn-outline-success" type="submit">Search</button>');
         $("#menu").fadeIn(1000);
     });
+    
     if(idioma=='es'){
         $('#toggle-event').prop('checked',true);
     } 
@@ -43,5 +28,7 @@ function loadMenu() {
     
 }
 
+
+ 
 
 

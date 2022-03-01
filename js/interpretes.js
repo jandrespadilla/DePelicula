@@ -13,10 +13,10 @@ async function buscarperson() {
                     $('#personas').append('<div class="row justify-content-between">'
                     +'<div class="row align-items-start">'
                      + '<div class="col-6 ">'
-                     + '<h2>Elenco e Interprete</h2>'
+                     + '<h2 id="titulo_page_person">'+titulos[0][localStorage.getItem('lang')]['titulo_page_person']+'</h2>'
                      + '</div>'
                      + '<div class="col-6">'
-                     + '<div class="input-group  justify-content-end "  ><input type="text" class="form-control" id="txtInterpretes"  aria-describedby="btnInterpretes" ><button class="btn btn-outline-secondary" type="button" id="btnProximamente">Buscar</button></div>   '
+                     + '<div class="input-group  justify-content-end "  ><input type="text" class="form-control" id="txtInterpretes"  aria-describedby="btnInterpretes" ><button class="btn btn-outline-secondary" type="button" id="btnBuscar">'+botones[0][localStorage.getItem('lang')]['btnBuscar']+'</button></div>   '
                      + '</div>'
                     +'</div>');
                     $('#personas').append('<div class="row justify-content-between" id="divResultado" ></div>');                    
@@ -30,7 +30,7 @@ async function buscarperson() {
                             $('#card'+indice).click(function(){
                                 $('#detallePersona').modal('toggle');
                                 $('#detallePersonaLabel').html(persona.name);
-                                personaObj = buscarDatosPerson(persona.id); 
+                                personaObj = buscarDatosPersonModal(persona.id); 
                                 
                                 } );
                             $('#card'+indice).append('<div id="card_body'+indice+'" class="card-body body_card" ></div>');
@@ -46,9 +46,10 @@ async function buscarperson() {
                 $("#txtInterpretes").keyup(function(event){
                     let texto = $("#txtInterpretes").val();
                     if ((texto.length>=3)) {
-                      $('#divResultado').html('');
-                      $('#divResultado').append('<h2>Falta Implementar el search</h2>');
-                      $('#divResultado').append(texto);
+                        $('#divResultado').html('');
+                         
+                        $('#titulo_page_person').html(titulos[0][localStorage.getItem('lang')]['tituloBusqueda']);  
+                        datos = buscadorTexto(texto,'person');
                     }else if(texto.length==0) {
                         buscarperson() ;
                       }
@@ -58,25 +59,26 @@ async function buscarperson() {
   }
 
 
-async function buscarDatosPerson(idPersona) {
-   // if ($('#toggle-event').prop('checked')) {localStorage.getItem('lang')='es'}else{localStorage.getItem('lang')='en'}
-    $.ajax(
-        'https://api.themoviedb.org/3/person/'+idPersona+'?api_key=5e5fc3b9e60f1572acb749241e477ec9&language='+localStorage.getItem('lang'),
-        {
-            success: function(data) {
-              $('#infoPersona').html(data.biography);
-              $('#btnVerMas').click(
-                function(){
-                    window.location = "./interprete.html?interprete=" + data.id;//+'&lang='+localStorage.getItem('lang');
-                }
-            )              
-            },
-            error: function() {
-              alert('Hubo un error al cargar los datos de la persona.');
-            }
-         }
-      );
-  }
+
+  async function buscarDatosPersonModal(idPersona) {
+    // if ($('#toggle-event').prop('checked')) {localStorage.getItem('lang')='es'}else{localStorage.getItem('lang')='en'}
+     $.ajax(
+         'https://api.themoviedb.org/3/person/'+idPersona+'?api_key=5e5fc3b9e60f1572acb749241e477ec9',
+         {
+             success: function(data) {
+               $('#infoPersona').html(data.biography);
+               $('#btnVerMas').click(
+                 function(){
+                     window.location = "./interprete.html?interprete=" + data.id;
+                 }
+             )              
+             },
+             error: function() {
+               alert('Hubo un error al cargar los datos de la persona.');
+             }
+          }
+       );
+   }
  
      buscarperson();
 
