@@ -47,12 +47,18 @@ async function buscarActores(id) {
 
       actores = await response;
       let interpretes=titulos[0][localStorage.getItem('lang')]['lblInterprete']+': ';
-      for (let index = 0; index < 10; index++) {
-        const act = actores.cast[index];
-        index != 0 ?  interpretes += ' - ' : interpretes += ' ';
-        interpretes +=  '<a id="link" class="link-secondary" href="./interprete.html?interprete='+act.id+'">'+act.name+'</a>';  
-       }
-       $('#divParrafo').append(' <p id="parrafo" class="text-justify pBiografia" >'+interpretes+'</p>'); 
+       
+      if ( actores.cast.length>0) {
+        for (let index = 0; index < actores.cast.length; index++) {
+          const act = actores.cast[index];
+        
+          index != 0 ?  interpretes += ' - ' : interpretes += ' ';
+          interpretes +=  '<a id="link" class="link-secondary" href="./interprete.html?interprete='+act.id+'">'+act.name+'</a>';  
+         }
+         $('#divParrafo').append(' <p id="parrafo" class="text-justify pBiografia" >'+interpretes+'</p>'); 
+      }
+
+      
         
       return actores;
   }

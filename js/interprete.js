@@ -11,7 +11,12 @@ function interprete(interprete ) {
                           $('#personas').html('');
                           $('#personas').append('<div id="columna" class="row"></div>');
                           $('#columna').append('<div id="divPoster" class="col"></div>');
-                          $('#divPoster').append('<img id="poster" class="imagenPeli inline" src="https://image.tmdb.org/t/p/w500/'+data.profile_path+'">');
+                          if (data.profile_path!=null) {
+                            $('#divPoster').append('<img id="poster" class="imagenPeli inline" src="https://image.tmdb.org/t/p/w500/'+data.profile_path+'">'); 
+                          } else {
+                            $('#divPoster').append('<img id="poster" class="imagenPeli inline" src="./style/images/persona.png">');
+                          }                        
+                        
                           $('#columna').append('<div id="divParrafo" class="col"></div>');
                           $('#divParrafo').append('<h2 id="nombre">'+data.name+'</p>');
                           $('#divParrafo').append(' <p id="parrafo" class="pBiografia text-justify" >'+titulos[0][localStorage.getItem('lang')]['lblBiografia']+': '+data.biography+'</p>');

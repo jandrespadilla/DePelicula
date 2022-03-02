@@ -165,15 +165,13 @@ async function buscadorTexto(texto,buscar,pagina=1) {
 		 {
 			 success: function(data) {
 				if (data.biography!='') {
-					$('#card_body'+indi).append('<p class="card-text text-dark clase" >'+data.biography+'</p>');
+					$('#card_body'+indi).append('<p class="card-text text-dark clase" >'+titulos[0][localStorage.getItem('lang')]['lblBiografia']+': '+data.biography+'</p>');
 				} else {
-					$('#card_body'+indi).append('<p class="card-text text-dark" >Sin Biografia.</p>');
+					$('#card_body'+indi).append('<p class="card-text text-dark" >No '+titulos[0][localStorage.getItem('lang')]['lblBiografia']+'.</p>');
 				}	
 				if (data.birthday!=null) {
-					$('#card_body'+indi).append('<p class="card-text text-dark" >Nacio: '+data.birthday+'</p>');
-				} else {
-					$('#card_body'+indi).append('<p class="card-text text-dark" >Nacio: Sin datos</p>');
-				}			    
+					$('#card_body'+indi).append('<p class="card-text text-dark" >'+titulos[0][localStorage.getItem('lang')]['lblNacimiento']+': '+data.birthday+'</p>');
+				} 		    
 			 },
 			 error: function() {
 			   alert('Hubo un error al cargar los datos de la persona.');
